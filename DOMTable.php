@@ -44,8 +44,6 @@ class DOMTable {
 	protected $total_rows;
 	protected $max_pages;
 	
-	protected $appliance = array();
-	
 	/*
 		[ DOMTable __constructor() ]
 	*/
@@ -146,13 +144,13 @@ class DOMTable {
 		else if( !is_numeric($this->chunks) )
 			throw new exception( __CLASS__ . "::\$chunks is not a valid interger [number]" );
 		
-		$begin = ((int)$this->page - 1) * (int)$this->chunks;
+		$begin = ($this->page - 1) * $this->chunks;
 		
 		// process for data as Array;
 		
 		if( is_array($this->data) ) {
 			$this->total_rows = count($this->data);
-			$result = array_slice($this->data, $begin, (int)$this->chunks );
+			$result = array_slice($this->data, $begin, $this->chunks );
 			foreach( $result as $key => $data ) {
 				$result[$key] = $this->modify_data( $data, $func );
 			}
@@ -161,12 +159,12 @@ class DOMTable {
 			$result = array();
 			$this->data->data_seek($begin);
 			while( $data = $this->data->fetch_assoc() ) {
-				if( count($result) == (int)$this->chunks ) break;
+				if( count($result) == $this->chunks ) break;
 				$result[] = $this->modify_data( $data, $func );
 			};
 		};
 		
-		$this->max_pages = ceil( $this->total_rows / (int)$this->chunks );
+		$this->max_pages = ceil( $this->total_rows / $this->chunks );
 		
 		return $result;
 		

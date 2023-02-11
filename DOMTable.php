@@ -41,8 +41,8 @@ class DOMTable {
 	
 	protected $columns = [];
 	protected $data;
-	protected $total_rows;
-	protected $max_pages;
+	protected $rows;
+	protected $pages;
 	
 	/*
 		[ DOMTable __constructor() ]
@@ -109,6 +109,7 @@ class DOMTable {
 		if( !($data instanceof MYSQLI_RESULT ) && !is_array($data) )
 			throw new Exception( __CLASS__ . "::" . __FUNCTION__ . "() argument must be an Array or an instance of Mysqli_Result" );
 		$this->data = $data;
+		$this->calculate();
 	}
 	
 	
@@ -120,6 +121,7 @@ class DOMTable {
 		$rows = abs($rows);
 		if( !$rows ) return;
 		$this->chunks = $rows;
+		$this->calculate();
 	}
 	
 	/*
@@ -130,6 +132,16 @@ class DOMTable {
 		$page = abs($page);
 		if( !$page ) return;
 		$this->page = $page;
+	}
+	
+	/*
+		Calculate Number of Rows and Pages;
+	*/
+	
+	private function calculate() {
+		if( empty($this->data) || empty($this->chunks) ) return;
+		$this->rows = is_array($this->data) ? count($this->data) : $this->data->num_rows;
+		$this->pages = ceil( $this->rows / $this->chunks );
 	}
 	
 	/*
@@ -149,13 +161,11 @@ class DOMTable {
 		// process for data as Array;
 		
 		if( is_array($this->data) ) {
-			$this->total_rows = count($this->data);
 			$result = array_slice($this->data, $begin, $this->chunks );
 			foreach( $result as $key => $data ) {
 				$result[$key] = $this->modify_data( $data, $func );
 			}
 		} else {
-			$this->total_rows = $this->data->num_rows;
 			$result = array();
 			$this->data->data_seek($begin);
 			while( $data = $this->data->fetch_assoc() ) {
@@ -163,8 +173,6 @@ class DOMTable {
 				$result[] = $this->modify_data( $data, $func );
 			};
 		};
-		
-		$this->max_pages = ceil( $this->total_rows / $this->chunks );
 		
 		return $result;
 		

@@ -143,8 +143,9 @@
 
 	*/
 
-	$table->rows_per_page = 3;
-	$table->page = (int)($_GET['paged'] ?? 1);
+	$table->chunk(3); // Number of rows per page
+	
+	$table->page( $_GET['paged'] ?? 1 ); // The current page
 
 
 	/*
@@ -229,9 +230,9 @@
 	
 	// set table limit;
 	
-	$table->rows_per_page = 5; // set max table rows;
+	$table->chunk(5); // set max table rows per page;
 	
-	$table->page = 1; // define the current page;
+	$table->page(1); // define the current page;
 	
 	
 	// prepare the table;

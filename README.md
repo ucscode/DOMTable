@@ -30,9 +30,9 @@ $table->data( array(
 
 // set table limit;
 
-$table->rows_per_page = 5; // set max table rows;
+$table->chunk(5); // set max number of rows per page;
 
-$table->page = 1; // define the current page;
+$table->page(1); // define the current page;
 
 
 // prepare the table;

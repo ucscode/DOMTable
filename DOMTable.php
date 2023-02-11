@@ -36,8 +36,8 @@ class DOMTable {
 	protected $table;
 	protected $container;
 	
-	public $rows_per_page = 10;
-	public $page = 1;
+	protected $chunks = 10;
+	protected $page = 1;
 	
 	protected $columns = [];
 	protected $data;
@@ -115,6 +115,26 @@ class DOMTable {
 	
 	
 	/*
+		[ Divide Table Data Into Chunks ] 
+	*/
+	
+	public function chunk( int $rows ) {
+		$rows = abs($rows);
+		if( !$rows ) return;
+		$this->chunks = $rows;
+	}
+	
+	/*
+		[ Change Chunk Page ]
+	*/
+	
+	public function page( int $page ) {
+		$page = abs($page);
+		if( !$page ) return;
+		$this->page = $page;
+	}
+	
+	/*
 		[ Process data ] 
 	*/
 	
@@ -123,16 +143,16 @@ class DOMTable {
 		if( !is_numeric($this->page) )
 			throw new exception( __CLASS__ . "::\$page is not a valid interger [number]" );
 
-		else if( !is_numeric($this->rows_per_page) )
-			throw new exception( __CLASS__ . "::\$rows_per_page is not a valid interger [number]" );
+		else if( !is_numeric($this->chunks) )
+			throw new exception( __CLASS__ . "::\$chunks is not a valid interger [number]" );
 		
-		$begin = ((int)$this->page - 1) * (int)$this->rows_per_page;
+		$begin = ((int)$this->page - 1) * (int)$this->chunks;
 		
 		// process for data as Array;
 		
 		if( is_array($this->data) ) {
 			$this->total_rows = count($this->data);
-			$result = array_slice($this->data, $begin, (int)$this->rows_per_page );
+			$result = array_slice($this->data, $begin, (int)$this->chunks );
 			foreach( $result as $key => $data ) {
 				$result[$key] = $this->modify_data( $data, $func );
 			}
@@ -141,12 +161,12 @@ class DOMTable {
 			$result = array();
 			$this->data->data_seek($begin);
 			while( $data = $this->data->fetch_assoc() ) {
-				if( count($result) == (int)$this->rows_per_page ) break;
+				if( count($result) == (int)$this->chunks ) break;
 				$result[] = $this->modify_data( $data, $func );
 			};
 		};
 		
-		$this->max_pages = ceil( $this->total_rows / (int)$this->rows_per_page );
+		$this->max_pages = ceil( $this->total_rows / (int)$this->chunks );
 		
 		return $result;
 		

@@ -53,7 +53,7 @@ class DOMTable {
 	public function __construct( ?string $tablename = null ) {
 		
 		// table name as element id;
-		$this->tablename = empty($tablename) ? uniqid() : $tablename;
+		$this->tablename = empty($tablename) ? ( '_' . uniqid() ) : $tablename;
 		
 		//libxml_use_internal_errors(true);
 		

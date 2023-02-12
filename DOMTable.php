@@ -32,6 +32,8 @@
 
 class DOMTable {
 	
+	protected $tablename;
+	
 	protected $doc;
 	protected $table;
 	protected $container;
@@ -51,7 +53,7 @@ class DOMTable {
 	public function __construct( ?string $tablename = null ) {
 		
 		// table name as element id;
-		if( empty($tablename) ) $tablename = uniqid();
+		$this->tablename = empty($tablename) ? uniqid() : $tablename;
 		
 		//libxml_use_internal_errors(true);
 		
@@ -66,7 +68,7 @@ class DOMTable {
 			<div class='dt-container'>
 				<!-- a good spot add features like search box, checkbox options etc -->
 				<div class='table-responsive'>
-					<table class='table' id='dt-{$tablename}'>
+					<table class='table' id='dt-{$this->tablename}'>
 						<thead/>
 						<tbody/>
 						<tfoot/>

@@ -148,7 +148,7 @@ class DOMTable {
 		[ Process data ] 
 	*/
 	
-	private function init_data($func) {
+	protected function init_data($func) {
 		
 		if( !is_numeric($this->page) )
 			throw new exception( __CLASS__ . "::\$page is not a valid interger [number]" );
@@ -178,7 +178,7 @@ class DOMTable {
 		
 	}
 	
-	private function modify_data( $data, $func ) {
+	protected function modify_data( $data, $func ) {
 		$missing_columns = array_diff( array_keys($this->columns[0]), array_keys($data) );
 		if( !empty($missing_columns) ) {
 			foreach( $missing_columns as $key ) $data[$key] = null;

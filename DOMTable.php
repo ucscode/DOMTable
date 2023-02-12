@@ -258,6 +258,7 @@ class DOMTable {
 		$div = $this->doc->importNode( $dom->getElementsByTagName('body')->item(0)->firstChild, true );
 		while( $el->firstChild ) $el->removeChild( $el->firstChild );
 		while( $div->firstChild ) $el->appendChild( $div->firstChild );
+		return $el;
 	}
 	
 	/*

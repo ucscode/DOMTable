@@ -140,7 +140,7 @@ class DOMTable {
 		Calculate Number of Rows and Pages;
 	*/
 	
-	private function calculate() {
+	protected function calculate() {
 		if( empty($this->data) || empty($this->chunks) ) return;
 		$this->rows = is_array($this->data) ? count($this->data) : $this->data->num_rows;
 		$this->pages = ceil( $this->rows / $this->chunks );
@@ -216,9 +216,9 @@ class DOMTable {
 		$span = $this->doc->createElement('span');
 		$div->appendChild($span);
 		// Create TEXT & appendTo SPAN;
-		$textNode = $this->doc->createTextNode('No result found');
+		$textNode = $this->doc->createTextNode('No results found');
 		$span->appendChild($textNode);
-		$this->container->appendChild($div);
+		$this->table->parentNode->parentNode->appendChild($div);
 	}
 	
 	
@@ -271,6 +271,12 @@ class DOMTable {
 	*/
 	
 	public function prepare( ?callable $func = null, bool $print = false ) {
+		
+		if( empty($this->columns[0]) ) {
+			throw new Exception( __CLASS__ . "::\$columns is required to process table" );
+		} else if( empty($this->data) ) {
+			throw new Exception( "No data was supplied through " . __CLASS__ . "::data() method" );
+		};
 		
 		// create a new row for <thead/>
 		$this->create_row( array_values($this->columns[0]), 'th', 'thead' );

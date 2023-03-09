@@ -42,7 +42,7 @@ class DOMTable {
 	protected $page = 1;
 	
 	protected $columns = [];
-	protected $data;
+	protected $data = null;
 	protected $rows;
 	protected $pages;
 	
@@ -274,7 +274,7 @@ class DOMTable {
 		
 		if( empty($this->columns[0]) ) {
 			throw new Exception( __CLASS__ . "::\$columns is required to process table" );
-		} else if( empty($this->data) ) {
+		} else if( is_null($this->data) ) {
 			throw new Exception( "No data was supplied through " . __CLASS__ . "::data() method" );
 		};
 		

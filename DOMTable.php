@@ -1,33 +1,16 @@
 <?php
 
-/*
-	
-	Project-Name: DOMTable
-	
-	Version: 1.0
-	
-	Author-Name: Uchenna Ajah
-	
-	Author-Slug: Ucscode
-	
-	Founded: Dec 20, 2022;
-	
-	Github-Profile: https://github.com/ucscode
-	
-	Author-Website: https://ucscode.me
-	
-	Description: A PHP Library that uses DOMDocument & Nodes to create custom HTML table
-	
-	Disclaimer: 
-		This library only creates "Table" Element and has no stylesheet. 
-		The CSS of the table element should be created by the programmer utilizing this library
-	
-	Help: To make custom features, consider extending the DOMTable class.
-		
-		E.G:
-			
-			class customDOMTable extends DOMTable { }
-		
+/**
+ * DOMTable
+ * 
+ * A PHP Library that uses DOMDocument & Nodes to create custom HTML table
+ * This library only creates "Table" Element and has no stylesheet. 
+ * The CSS of the table element should be created by the programmer utilizing this library
+ *
+ * @author ucscode
+ * @since Dec 20, 2022;
+ * @link https://github.com/ucscode
+ *	
 */
 
 class DOMTable {

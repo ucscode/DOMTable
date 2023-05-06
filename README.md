@@ -1,5 +1,5 @@
 
-#DOMTable
+# DOMTable
 
 DOMTable is a lightweight PHP library that simplifies the process of creating tables with minimal code. It utilizes the Document Object Model (DOM) to generate HTML code, allowing you to easily display data in a table format. The library is designed to be simple, efficient, and requires no external dependencies.
 

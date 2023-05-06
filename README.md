@@ -1,45 +1,80 @@
-# DOMTable
-A PHP Library that uses DOMDocument &amp; Nodes to create custom HTML table
 
-### Code Sample
+**DOMTable**
+
+DOMTable is a lightweight PHP library that simplifies the process of creating tables with minimal code. It utilizes the Document Object Model (DOM) to generate HTML code, allowing you to easily display data in a table format. The library is designed to be simple, efficient, and requires no external dependencies.
+
+## Features
+
+- Create HTML tables from MySQL query results or arrays
+- Customize table columns and their display titles
+- Manipulate column values before displaying them in the table
+- Option to print the table directly to the browser or obtain it as a string
+
+## Installation
+
+To use DOMTable in your PHP project, you can follow these steps:
+
+1. Download the `DOMTable.php` repo as .zip file
+2. Place the `DOMTable.php` file in your project directory.
+3. Include the file in your PHP script using `require_once 'DOMTable.php';`.
+
+## Usage
+
+### Setting up a table
 
 ```php
+// Instantiate DOMTable with table name
+$table = new DOMTable("users");
 
-## ------ [ SHORT SUMMARY OF HOW TO USE DOMTable ] ------
+// Set columns to display on the table
+$table->columns(array(
+    "id",
+    "username",
+    "email"
+));
 
-// create table instance;
+// Fetch data from MySQL database
+$mysql_result = $db->query("SELECT * FROM users");
 
-$table = new DOMTable( 'tablename' );
+// Populate the table with data
+$table->data($mysql_result);
 
-
-// set table column;
-
-$table->columns( array(
-	"id",
-	"name" => "Full Name"
-) );
-
-
-// set table data;
-
-$table->data( array(
-	array( "id" => 1, "name" => "My name" ),
-	array( "id" => 1, "name" => "Your name" ),
-) );
-
-
-// set table limit;
-
-$table->chunk(5); // set max number of rows per page;
-
-$table->page(1); // define the current page;
-
-
-// prepare the table;
-
-$tableHTMLString = $table->prepare();
-
-
-# echo $tableHTMLString;
-
+// Generate the HTML code for the table
+echo $table->prepare();
 ```
+
+### Modifying column values
+
+You can modify the values of the table columns before they are displayed using the `prepare()` method. The method accepts a callback function as an optional parameter, which allows you to manipulate the data.
+
+```php
+$table->prepare(function($data) {
+    $data['username'] = 'updated username';
+    $data['email'] = 'changed@email.com';
+    return $data;
+});
+```
+
+### Printing or obtaining the table
+
+By default, the `prepare()` method will directly print the HTML table to the browser. However, you can also obtain the generated table as a string by passing `false` as the second parameter.
+
+```php
+$tableHTML = $table->prepare(null, false);
+```
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Contribution
+
+Contributions to the DOMTable library are welcome! If you find any issues or have suggestions for improvements, please feel free to create an issue or submit a pull request on the [DOMTable GitHub repository](https://github.com/example/domtable).
+
+## Support
+
+If you have any questions or need support regarding the usage of DOMTable, please [open a new issue](https://github.com/ucscode/domtable/issues) on the GitHub repository.
+
+---
+
+With DOMTable, creating tables in PHP becomes effortless, allowing you to focus on your data presentation without the hassle of manual HTML coding. Enjoy the simplicity and flexibility that DOMTable brings to your table generation tasks. Happy coding!

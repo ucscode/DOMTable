@@ -43,6 +43,26 @@ $table->data($mysql_result);
 echo $table->prepare();
 ```
 
+### Populating With Array
+
+```php
+$data = [
+    [
+        'id' => 1,
+        'name' => 'John',
+        'email' => 'john@example.com',
+    ],
+    [
+        'id' => 2,
+        'name' => 'Jane',
+        'email' => 'jane@example.com',
+    ],
+    // Add more rows as needed
+];
+
+$table->data($data);
+```
+
 ### Modifying column values
 
 You can modify the values of the table columns before they are displayed using the `prepare()` method. The method accepts a callback function as an optional parameter, which allows you to manipulate the data.

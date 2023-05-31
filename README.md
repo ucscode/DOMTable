@@ -45,7 +45,7 @@ echo $table->prepare();
 
 ---
 
-### Populating With Array
+### Populating data with Array
 
 Data may also be populated with array. Consider the example below:
 

@@ -69,7 +69,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Contribution
 
-Contributions to the DOMTable library are welcome! If you find any issues or have suggestions for improvements, please feel free to create an issue or submit a pull request on the [DOMTable GitHub repository](https://github.com/example/domtable).
+Contributions to the DOMTable library are welcome! If you find any issues or have suggestions for improvements, please feel free to create an issue or submit a pull request on the [DOMTable GitHub repository](https://github.com/ucscode/domtable).
 
 ## Support
 

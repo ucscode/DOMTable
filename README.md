@@ -43,6 +43,8 @@ $table->data($mysql_result);
 echo $table->prepare();
 ```
 
+---
+
 ### Populating With Array
 
 Data may also be populated with array. Consider the example below:

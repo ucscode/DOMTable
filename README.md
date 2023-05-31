@@ -67,7 +67,7 @@ $data = array(
 $table->data($data);
 ```
 
-In this example, the $data array contains multiple rows of data, where each row is represented as an associative array. Each key in the associative array corresponds to a column name, and the corresponding value represents the data for that column in the row. You can add as many rows as needed to populate the table with your desired data.
+In this example, the `$dat`a array contains multiple rows of data, where each row is represented as an associative array. Each key in the associative array corresponds to a column name, and the corresponding value represents the data for that column in the row. You can add as many rows as needed to populate the table with your desired data.
 
 ### Modifying column values
 

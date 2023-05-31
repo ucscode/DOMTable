@@ -63,6 +63,8 @@ $data = [
 $table->data($data);
 ```
 
+In this example, the $data array contains multiple rows of data, where each row is represented as an associative array. Each key in the associative array corresponds to a column name, and the corresponding value represents the data for that column in the row. You can add as many rows as needed to populate the table with your desired data.
+
 ### Modifying column values
 
 You can modify the values of the table columns before they are displayed using the `prepare()` method. The method accepts a callback function as an optional parameter, which allows you to manipulate the data.

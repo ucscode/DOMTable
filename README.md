@@ -45,20 +45,22 @@ echo $table->prepare();
 
 ### Populating With Array
 
+Data may also be populated with array. Consider the example below:
+
 ```php
-$data = [
+$data = array(
     [
         'id' => 1,
-        'name' => 'John',
+        'username' => 'John',
         'email' => 'john@example.com',
     ],
     [
         'id' => 2,
-        'name' => 'Jane',
+        'username' => 'Jane',
         'email' => 'jane@example.com',
     ],
     // Add more rows as needed
-];
+);
 
 $table->data($data);
 ```

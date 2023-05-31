@@ -49,16 +49,16 @@ Data may also be populated with array. Consider the example below:
 
 ```php
 $data = array(
-    [
+    array(
         'id' => 1,
         'username' => 'John',
         'email' => 'john@example.com',
-    ],
-    [
+    ),
+    array(
         'id' => 2,
         'username' => 'Jane',
         'email' => 'jane@example.com',
-    ],
+    ),
     // Add more rows as needed
 );
 

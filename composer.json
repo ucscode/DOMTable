@@ -1,7 +1,6 @@
 {
     "name": "ucscode/domtable",
     "description": "Lightweight PHP library that simplifies the process of creating tables with minimal code",
-    "version": "1.0.1",
     "keywords": ["php", "html", "table", "dom", "element", "library"],
     "type": "library",
     "license": "MIT",
@@ -12,8 +11,7 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "ucscode/domtable": "^1.0"
+        "php": ">=7.4"
     },
     "minimum-stability": "stable"
 }

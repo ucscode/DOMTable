@@ -23,6 +23,8 @@ To use DOMTable in your PHP project, you can follow these steps:
 ### Setting up a table
 
 ```php
+use Ucscode\DOMTable\DOMTable;
+
 // Instantiate DOMTable with table name
 $table = new DOMTable("users");
 

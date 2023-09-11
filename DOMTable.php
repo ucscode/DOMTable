@@ -1,5 +1,7 @@
 <?php
 
+namespace Ucscode\DOMTable;
+
 /**
  * DOMTable
  *
@@ -164,7 +166,7 @@ class DOMTable
         //libxml_use_internal_errors(true);
 
         // Create a PHP DomDocument;
-        $this->doc = new DOMDocument('1.0', 'UTF-8');
+        $this->doc = new \DOMDocument('1.0', 'UTF-8');
 
         $this->doc->preserveWhiteSpace = false;
         $this->doc->formatOutput = true;
@@ -246,7 +248,7 @@ class DOMTable
      */
     public function data($data)
     {
-        if(!($data instanceof mysqli_result) && !is_array($data)) {
+        if(!($data instanceof \mysqli_result) && !is_array($data)) {
             throw new Exception(__CLASS__ . "::" . __FUNCTION__ . "() argument must be an Array or an instance of Mysqli_Result");
         }
         $this->data = $data;
@@ -321,9 +323,9 @@ class DOMTable
     {
 
         if(!is_numeric($this->page)) {
-            throw new exception(__CLASS__ . "::\$page is not a valid interger [number]");
+            throw new \exception(__CLASS__ . "::\$page is not a valid interger [number]");
         } elseif(!is_numeric($this->chunks)) {
-            throw new exception(__CLASS__ . "::\$chunks is not a valid interger [number]");
+            throw new \exception(__CLASS__ . "::\$chunks is not a valid interger [number]");
         }
 
         $begin = ($this->page - 1) * $this->chunks;
@@ -470,7 +472,7 @@ class DOMTable
      */
     public function innerHTML(&$el, ?string $innerHTML = null)
     {
-        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->preserveWhiteSpace = true;
         $innerHTML = preg_replace("/&(?!\S+;)/", "&amp;", $innerHTML);
         $dom->loadHTML("<?xml encoding='utf-8' ?><div>{$innerHTML}</div>");
@@ -505,9 +507,9 @@ class DOMTable
     {
 
         if(empty($this->columns[0])) {
-            throw new Exception(__CLASS__ . "::\$columns is required to process table");
+            throw new \Exception(__CLASS__ . "::\$columns is required to process table");
         } elseif(is_null($this->data)) {
-            throw new Exception("No data was supplied through " . __CLASS__ . "::data() method");
+            throw new \Exception("No data was supplied through " . __CLASS__ . "::data() method");
         };
 
         // create a new row for <thead/>

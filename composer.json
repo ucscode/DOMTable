@@ -14,5 +14,6 @@
     "require": {
         "php": ">=7.4",
         "ucscode/domtable": "^1.0"
-    }
+    },
+    "minimum-stability": "stable"
 }

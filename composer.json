@@ -1,0 +1,17 @@
+{
+    "name": "ucscode/domtable",
+    "description": "Lightweight PHP library that simplifies the process of creating tables with minimal code",
+    "keywords": ["php", "html", "table", "dom", "element", "library"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Uchenna Ajah",
+            "email": "uche23mail@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    },
+    "minimum-stability": "stable"
+}

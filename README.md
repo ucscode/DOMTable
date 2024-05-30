@@ -10,7 +10,15 @@ DOMTable is a lightweight PHP library that simplifies the process of creating ta
 - Manipulate column values before displaying them in the table
 - Option to print the table directly to the browser or obtain it as a string
 
-## Installation
+# Installation
+
+## Composer
+
+```bash
+composer require ucscode/domtable
+```
+
+## Manual
 
 To use DOMTable in your PHP project, you can follow these steps:
 
